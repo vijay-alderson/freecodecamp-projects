@@ -1,15 +1,20 @@
-function padRow(){
-	
-}
-
 const character = "#";
 const count = 8;
-// const rows = [];
+const rows = [];
 
-for (let i = 0; i < count; i = i+1) {
-	// rows.push(character.repeat(i+1)); // repeat method will repeat the target string 
-	console.log(character.repeat(i+1));
+function padRow(rowNumber, rowCount){
+	const blankSpace = " ".repeat(rowCount - rowNumber);
+	return blankSpace + character.repeat(2 * rowNumber - 1) + blankSpace;
 }
 
-const call = padRow(); // use const to assign a function call to the variable. Let doesn't work?
-console.log(call);
+
+for (let i = 0; i < count; i += 1){
+	rows.push(padRow(i+1, count));
+}
+
+let result = "";
+
+for (const row in rows){
+	result = result + row + "\n";
+}
+console.log(result);
